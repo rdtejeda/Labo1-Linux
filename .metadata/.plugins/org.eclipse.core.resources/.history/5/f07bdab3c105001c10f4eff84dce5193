@@ -1,0 +1,33 @@
+/*
+ ============================================================================
+ Name        : Clase.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+
+	setbuf(stdout,NULL);
+	printf("Esta es la primer clase");
+
+	int numeroUno;
+	int numeroDos;
+	int suma;
+
+	printf("\nIngrese el numero : \n");
+	scanf("%d",&numeroUno);
+	printf("\nIngrese el numero : \n");
+	scanf("%d",&numeroDos);
+
+	suma = numeroUno + numeroDos;
+
+	printf("\nLa suma es %d", suma);
+
+	return EXIT_SUCCESS;
+}
