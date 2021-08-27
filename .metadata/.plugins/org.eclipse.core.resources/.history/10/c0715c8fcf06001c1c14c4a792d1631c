@@ -50,8 +50,6 @@ int main(void) {
 	do
 	{
 		printf("Continuar? s-n");
-		fflush(stdin);
-
 		scanf("%c",&respuesta);
 	}
 	while(respuesta == 's');
