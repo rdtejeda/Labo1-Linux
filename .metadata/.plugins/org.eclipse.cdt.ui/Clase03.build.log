@@ -1,6 +1,6 @@
-17:25:07 **** Incremental Build of configuration Debug for project Clase03 ****
+14:55:16 **** Incremental Build of configuration Debug for project Clase03 ****
 make all 
 make: No se hace nada para 'all'.
 
-17:25:08 Build Finished. 0 errors, 0 warnings. (took 1s.23ms)
+14:55:17 Build Finished. 0 errors, 0 warnings. (took 876ms)
 

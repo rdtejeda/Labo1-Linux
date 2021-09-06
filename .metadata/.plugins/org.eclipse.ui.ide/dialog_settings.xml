@@ -5,5 +5,10 @@
 		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="false"/>
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
+		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="/media/usuario/5A7CEC697CEC40FD/Users/Usuario/Downloads/UTNFrA/Labora.Programa. I - Div. H - 2C&apos;21/Programacion_1_Laboratorio_1&apos;Local.Master&apos;/Clase_04/ejercicio"/>
+		</list>
+	</section>
+	<section name="NewWizardAction">
 	</section>
 </section>

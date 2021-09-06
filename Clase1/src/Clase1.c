@@ -10,6 +10,7 @@
 
 #include <stdio.h> //bibliotecas del lenguja
 #include <stdlib.h>
+#include <stdio_ext.h>
 
 #define EDAD_ADULTO 18 //es una macro que busca y reempaza la palabar por eso
 
@@ -23,23 +24,22 @@ int main(void) {
 	//Tipo variable estatico o fijo y no la puedo cambiar
 
 	int a=0; //numeros enteros
-	float f; //numero decimales
-	char c; //1 caracter, 1 letra, 1 simbolo
 	/* otros tipos de variables
 	double
 	long
 	*/
 	// para ingresar un numero
-	printf("Ingresa tu edad :");//primero pregunto y genero una direccion
-	fflush(stdin); //limpiar el bufer antes de leer siempre antes scanf
+	printf("Ingresa tu edad :\n");//primero pregunto y genero una direccion
+	__fpurge(stdin);//limpiar el bufer antes de leer siempre antes scanf
 	scanf("%d",&a);//despues asigno pasando la direccion con el & y avisando %d
 
 	if (a>=EDAD_ADULTO)
 	{
-		printf("Es mayor. ");
+		printf("Es mayor.\n ");
 	}
 
-	printf("Ingresaste la edad: %d ",a); //imprimo la variable
+	printf("Ingresaste la edad: %d\n",a); //imprimo la variable
+	__fpurge(stdin);
 
 	// bucles son equivalentes con cualquiera
 	//while (no se numeros de iteraciones)
@@ -49,9 +49,12 @@ int main(void) {
 	char respuesta;
 	do
 	{
-		printf("Continuar? s-n");
-		fflush(stdin);
+		printf("Ingresa tu edad :\n");//primero pregunto y genero una direccion
+		__fpurge(stdin);//limpiar el bufer antes de leer siempre antes scanf
+		scanf("%d",&a);//despues asigno pasando la direccion con el & y avisando %d
 
+		printf("Continuar? s-n");
+		__fpurge(stdin);
 		scanf("%c",&respuesta);
 	}
 	while(respuesta == 's');

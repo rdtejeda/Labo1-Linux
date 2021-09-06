@@ -23,6 +23,7 @@ d) La edad y legajo del que cursa más materias. (Sin importar su género)
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdio_ext.h>
 
 int main(void)
 {
@@ -41,7 +42,7 @@ int main(void)
 	int legajoMasJovenMasc;
 	int edadMasJovenMasc;
 	int cuentaMascLibres=0;
-	int acumulaNotaFem=0;//var c)
+	float acumulaNotaFem=0;//var c)
 	int cuentaFem=0;
 	float promNotaFem;
 	int acumulaNotaMasc=0;
@@ -63,11 +64,12 @@ int main(void)
 		scanf("%d",&legajo);
 		//pido tipo de cursada
 		printf("\nTipo cursada (L:'libre'-P:'presencial'-R:'remota')\n");
+		__fpurge(stdin);
 		scanf("%c",&cursada);
 		while(cursada != 'L' && cursada != 'P' && cursada != 'R' )
 				{
 					printf("\nERROR DE CARGA - Tipo cursada (L:'libre'-P:'presencial'-R:'remota')\n");
-					__fpurge (stdin);
+					__fpurge(stdin);
 					scanf("%c",&cursada);
 				}
 		//pido Cantidad de materias( mas de cero y menos de 8)
@@ -78,13 +80,16 @@ int main(void)
 					printf("\nERROR DE CARGA - Cantidad de materias( mas de cero y menos de 8)\n");
 					scanf("%d",&cantidadMaterias);
 				}
+
 		//Sexo (F: “femenino” – M: “masculino” , O: “no binario”)
 		printf("\nIngrese Sexo (F: “femenino” – M: “masculino” , O: “no binario”)\n");
+		__fpurge(stdin);
 		scanf("%c",&sexo);
+
 		while(sexo != 'F' && sexo != 'M' && sexo != 'O' )
 				{
-					printf("\nERROR DE CARGA - Ingrese Sexo (F: “femenino” – M: “masculino” , O: “no binario”)\n");
-					__fpurge (stdin);
+			 	 	printf("\nERROR DE CARGA - Ingrese Sexo (F: “femenino” – M: “masculino” , O: “no binario”)\n");
+			 	 	__fpurge(stdin);
 					scanf("%c",&sexo);
 				}
 		//Nota promedio (entre 0 y 10)
@@ -100,7 +105,7 @@ int main(void)
 		scanf("%d",&edad);
 		while(edad <=18 || edad>100)
 				{
-					printf("\nERROR DE CARGA - Nota promedio (entre 0 y 10)\n");
+					printf("\nERROR DE CARGA - Ingresar edad Mayor de 18 y menor de 100\n");
 					scanf("%d",&edad);
 				}
 		switch (sexo) {
@@ -130,6 +135,7 @@ int main(void)
 			case 'F':
 				cuentaFem++;
 				acumulaNotaFem=acumulaNotaFem+notaPromedio;
+				printf("\nEl acumulado de nota de sexo Femenino es %.2f", acumulaNotaFem);
 				// a) Busco El Legajo del mejor promedio femenino.
 				if(banderaMejorPromFeme) //busco el max
 										{
@@ -172,7 +178,6 @@ int main(void)
 
 				}
 		printf("\n¿desea conntinuar?s-n\n");
-		__fpurge (stdin);
 		scanf("%s",&sigue);
 	}
 	// c) El promedio de nota por sexo.

@@ -1,105 +1,32 @@
-16:53:19 **** Incremental Build of configuration Debug for project Clase 03 ****
+21:27:16 **** Incremental Build of configuration Debug for project Clase 03 ****
 make all 
 Building file: ../src/Clase 03.c
 Invoking: GCC C Compiler
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Clase 03.d" -MT"src/Clase 03.o" -o "src/Clase 03.o" "../src/Clase 03.c"
-../src/Clase 03.c:13:1: error: stray ‘\342’ in program
-   13 | ​
+../src/Clase 03.c: In function ‘sumarEnteros’:
+../src/Clase 03.c:16:16: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+   16 | int main(void) {
+      |                ^
+../src/Clase 03.c:47:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+   47 | {
       | ^
-../src/Clase 03.c:13:2: error: stray ‘\200’ in program
-   13 | ​
-      |  ^
-../src/Clase 03.c:13:3: error: stray ‘\213’ in program
-   13 | ​
-      |   ^
-../src/Clase 03.c:15:1: error: stray ‘\342’ in program
-   15 | ​
+../src/Clase 03.c:54:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+   54 | {
       | ^
-../src/Clase 03.c:15:2: error: stray ‘\200’ in program
-   15 | ​
-      |  ^
-../src/Clase 03.c:15:3: error: stray ‘\213’ in program
-   15 | ​
-      |   ^
-../src/Clase 03.c:16:1: error: stray ‘\342’ in program
-   16 | ​
+../src/Clase 03.c:61:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+   61 | {
       | ^
-../src/Clase 03.c:16:2: error: stray ‘\200’ in program
-   16 | ​
-      |  ^
-../src/Clase 03.c:16:3: error: stray ‘\213’ in program
-   16 | ​
-      |   ^
-../src/Clase 03.c: In function ‘main’:
-../src/Clase 03.c:19:1: error: stray ‘\342’ in program
-   19 | ​
+../src/Clase 03.c:71:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+   71 | {
       | ^
-../src/Clase 03.c:19:2: error: stray ‘\200’ in program
-   19 | ​
-      |  ^
-../src/Clase 03.c:19:3: error: stray ‘\213’ in program
-   19 | ​
-      |   ^
-../src/Clase 03.c:22:1: error: stray ‘\342’ in program
-   22 | ​
-      | ^
-../src/Clase 03.c:22:2: error: stray ‘\200’ in program
-   22 | ​
-      |  ^
-../src/Clase 03.c:22:3: error: stray ‘\213’ in program
-   22 | ​
-      |   ^
-../src/Clase 03.c:25:1: error: stray ‘\342’ in program
-   25 | ​
-      | ^
-../src/Clase 03.c:25:2: error: stray ‘\200’ in program
-   25 | ​
-      |  ^
-../src/Clase 03.c:25:3: error: stray ‘\213’ in program
-   25 | ​
-      |   ^
-../src/Clase 03.c:33:1: error: stray ‘\342’ in program
-   33 | ​
-      | ^
-../src/Clase 03.c:33:2: error: stray ‘\200’ in program
-   33 | ​
-      |  ^
-../src/Clase 03.c:33:3: error: stray ‘\213’ in program
-   33 | ​
-      |   ^
-../src/Clase 03.c:37:1: error: stray ‘\342’ in program
-   37 | ​
-      | ^
-../src/Clase 03.c:37:2: error: stray ‘\200’ in program
-   37 | ​
-      |  ^
-../src/Clase 03.c:37:3: error: stray ‘\213’ in program
-   37 | ​
-      |   ^
-../src/Clase 03.c:40:1: error: stray ‘\342’ in program
-   40 | ​
-      | ^
-../src/Clase 03.c:40:2: error: stray ‘\200’ in program
-   40 | ​
-      |  ^
-../src/Clase 03.c:40:3: error: stray ‘\213’ in program
-   40 | ​
-      |   ^
-../src/Clase 03.c: At top level:
-../src/Clase 03.c:48:29: warning: "/*" within comment [-Wcomment]
-   48 |  puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
-      |                              
-../src/Clase 03.c:49:2: error: expected identifier or ‘(’ before ‘return’
-   49 |  return EXIT_SUCCESS;
-      |  ^~~~~~
-../src/Clase 03.c:50:1: error: expected identifier or ‘(’ before ‘}’ token
-   50 | }
-      | ^
-../src/Clase 03.c:51:2: error: expected identifier or ‘(’ before ‘/’ token
-   51 | */
-      |  ^
+../src/Clase 03.c:89: error: expected ‘{’ at end of input
+   89 | 
+      | 
+../src/Clase 03.c:89: warning: control reaches end of non-void function [-Wreturn-type]
+   89 | 
+      | 
 make: *** [src/subdir.mk:20: src/Clase 03.o] Error 1
 "make all" terminated with exit code 2. Build might be incomplete.
 
-16:53:20 Build Failed. 31 errors, 1 warnings. (took 930ms)
+21:27:17 Build Failed. 7 errors, 1 warnings. (took 1s.64ms)
 

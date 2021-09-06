@@ -10,11 +10,13 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdio_ext.h>
 
 int main(void)
 {
 	// setbuf(stdout,NULL);
 	printf("Esta es la primer clase");
+	__fpurge(stdin);
 
 	//declarar variables
 	int numeroUno;
