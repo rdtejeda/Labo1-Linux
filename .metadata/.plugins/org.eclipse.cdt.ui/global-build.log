@@ -1,18 +1,36 @@
-21:19:48 **** Build of configuration Debug for project A ****
+16:07:22 **** Incremental Build of configuration Debug for project FuncionesByErnesto ****
 make all 
-Building file: ../src/A.c
+Building file: ../src/FuncionesByErnesto.c
 Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/A.d" -MT"src/A.o" -o "src/A.o" "../src/A.c"
-Finished building: ../src/A.c
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/FuncionesByErnesto.d" -MT"src/FuncionesByErnesto.o" -o "src/FuncionesByErnesto.o" "../src/FuncionesByErnesto.c"
+../src/FuncionesByErnesto.c:88:3: warning: "/*" within comment [-Wcomment]
+   88 |  //*pResultado = aux;
+      |    
+Finished building: ../src/FuncionesByErnesto.c
  
-Building target: A
+Building target: FuncionesByErnesto
 Invoking: GCC C Linker
-gcc  -o "A"  ./src/A.o   
-Finished building target: A
+gcc  -o "FuncionesByErnesto"  ./src/FuncionesByErnesto.o ./src/utn.o   
+Finished building target: FuncionesByErnesto
  
-21:19:55 **** Incremental Build of configuration Debug for project A ****
+16:07:26 **** Incremental Build of configuration Debug for project FuncionesByErnesto ****
 make all 
 make: No se hace nada para 'all'.
-21:20:02 **** Incremental Build of configuration Debug for project A ****
+16:08:12 **** Incremental Build of configuration Debug for project FuncionesByErnesto ****
+make all 
+Building file: ../src/FuncionesByErnesto.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/FuncionesByErnesto.d" -MT"src/FuncionesByErnesto.o" -o "src/FuncionesByErnesto.o" "../src/FuncionesByErnesto.c"
+../src/FuncionesByErnesto.c:88:3: warning: "/*" within comment [-Wcomment]
+   88 |  //*pResultado = aux;
+      |    
+Finished building: ../src/FuncionesByErnesto.c
+ 
+Building target: FuncionesByErnesto
+Invoking: GCC C Linker
+gcc  -o "FuncionesByErnesto"  ./src/FuncionesByErnesto.o ./src/utn.o   
+Finished building target: FuncionesByErnesto
+ 
+16:27:21 **** Incremental Build of configuration Debug for project FuncionesByErnesto ****
 make all 
 make: No se hace nada para 'all'.
