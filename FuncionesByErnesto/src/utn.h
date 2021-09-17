@@ -13,5 +13,7 @@ int pedirFloatAUsuario3(float* pResultado, float min, float max, int reintentos)
 int pedirFloatAUsuario4(float* pResultado, float min, float max, int reintentos);
 int pedirFloatAUsuario5(float* pResultado, float min, float max, int reintentos, char* variableTexto);
 int pedirFloatAUsuario6(float* pResultado, float min, float max, int reintentos, char* variableTexto, char* textoError);
+int pedirCharAUsuario(char* pResultado, int min, int max, int reintentos, char* variableTexto, char* textoError);
+int pedirFloatAUsuario(float* pResultado, float min, float max, int reintentos, char* variableTexto, char* textoError);
 
 #endif /* UTN_H_ */

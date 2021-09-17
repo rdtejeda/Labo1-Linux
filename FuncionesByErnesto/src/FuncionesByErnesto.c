@@ -56,9 +56,40 @@ int main (void)
 
 	}
 }
+/*
+//Valido Presultado, min max reintento y textos
+int pedirFloatAUsuario7(float* pResultado, float min, float max, int reintentos, char* variableTexto, char* textoError)
+{
+	float buffer; //par guardar momentanemente
+	float aux;
+	int retorno=-1; //TODO BIEN menos uno -1
+	int i;
+	if(pResultado != NULL && reintentos >=0 && min<max variableTexto != NULL && textoError != NULL)
+	{
+		for (i=0; i<=reintentos; i++)
+		{
+			printf("%s",variableTexto);
+			scanf("%f", &buffer);
 
+			if (aux>=min && aux<=max)
+			{
+				retorno = 0; // OK
+				*pResultado=buffer
+								break;
+			}
+			else
+			{
+				retorno = 0;// TODO MA
+				printf("%s\n",textoError);
+			}
+		}
+	}
+	return retorno;
+}
+*/
+/*
 //---------------------------------------------------------------------
-/* //SOLO PIDE DIVIDIR en Libreria
+//SOLO PIDE DIVIDIR en Libreria
 int main (void)
 {
 	int estado;
@@ -75,9 +106,10 @@ int main (void)
 		printf ("No se puede dividir\n");
 	}
 	return EXIT_SUCCESS;
-}*/
-
-/*//---------------------------------------------------------------------
+}
+*/
+/*
+//---------------------------------------------------------------------
 //PEDIR NUMERO V1
 
 void pedirNumeroAlUsuario1(float* pResultado)
@@ -89,8 +121,8 @@ void pedirNumeroAlUsuario1(float* pResultado)
 	scanf("%f",pResultado);
 }
 */
-
-/*//---------------------------------------------------------------------
+/*
+//---------------------------------------------------------------------
 //PEDIR NUMERO V2
 int pedirNumeroAlUsuario2(float* pResultado,float min, float max)
 {
@@ -111,4 +143,5 @@ int pedirNumeroAlUsuario2(float* pResultado,float min, float max)
 	}
 
 	return estado;
-}*/
+}
+*/

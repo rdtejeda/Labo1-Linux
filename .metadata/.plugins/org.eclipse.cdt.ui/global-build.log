@@ -1,36 +1,27 @@
-16:07:22 **** Incremental Build of configuration Debug for project FuncionesByErnesto ****
+12:17:30 **** Incremental Build of configuration Debug for project Mi Biblioteca ****
 make all 
-Building file: ../src/FuncionesByErnesto.c
+Building file: ../src/Mi Biblioteca.c
 Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/FuncionesByErnesto.d" -MT"src/FuncionesByErnesto.o" -o "src/FuncionesByErnesto.o" "../src/FuncionesByErnesto.c"
-../src/FuncionesByErnesto.c:88:3: warning: "/*" within comment [-Wcomment]
-   88 |  //*pResultado = aux;
-      |    
-Finished building: ../src/FuncionesByErnesto.c
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Mi Biblioteca.d" -MT"src/Mi Biblioteca.o" -o "src/Mi Biblioteca.o" "../src/Mi Biblioteca.c"
+Finished building: ../src/Mi Biblioteca.c
  
-Building target: FuncionesByErnesto
+Building target: Mi Biblioteca
 Invoking: GCC C Linker
-gcc  -o "FuncionesByErnesto"  ./src/FuncionesByErnesto.o ./src/utn.o   
-Finished building target: FuncionesByErnesto
+gcc  -o "Mi Biblioteca"  ./src/Matriz.o ./src/Mi\ Biblioteca.o ./src/Mi-utn.o ./src/Operar.o ./src/Pedir.o ./src/Txt.o   
+Finished building target: Mi Biblioteca
  
-16:07:26 **** Incremental Build of configuration Debug for project FuncionesByErnesto ****
+12:17:35 **** Incremental Build of configuration Debug for project Mi Biblioteca ****
 make all 
 make: No se hace nada para 'all'.
-16:08:12 **** Incremental Build of configuration Debug for project FuncionesByErnesto ****
+12:18:35 **** Incremental Build of configuration Debug for project Mi Biblioteca ****
 make all 
-Building file: ../src/FuncionesByErnesto.c
+Building file: ../src/Mi Biblioteca.c
 Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/FuncionesByErnesto.d" -MT"src/FuncionesByErnesto.o" -o "src/FuncionesByErnesto.o" "../src/FuncionesByErnesto.c"
-../src/FuncionesByErnesto.c:88:3: warning: "/*" within comment [-Wcomment]
-   88 |  //*pResultado = aux;
-      |    
-Finished building: ../src/FuncionesByErnesto.c
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Mi Biblioteca.d" -MT"src/Mi Biblioteca.o" -o "src/Mi Biblioteca.o" "../src/Mi Biblioteca.c"
+Finished building: ../src/Mi Biblioteca.c
  
-Building target: FuncionesByErnesto
+Building target: Mi Biblioteca
 Invoking: GCC C Linker
-gcc  -o "FuncionesByErnesto"  ./src/FuncionesByErnesto.o ./src/utn.o   
-Finished building target: FuncionesByErnesto
+gcc  -o "Mi Biblioteca"  ./src/Matriz.o ./src/Mi\ Biblioteca.o ./src/Mi-utn.o ./src/Operar.o ./src/Pedir.o ./src/Txt.o   
+Finished building target: Mi Biblioteca
  
-16:27:21 **** Incremental Build of configuration Debug for project FuncionesByErnesto ****
-make all 
-make: No se hace nada para 'all'.
