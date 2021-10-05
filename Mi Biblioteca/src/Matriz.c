@@ -7,13 +7,82 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdio_ext.h>
+#include <string.h>
 
 #include "Mi-utn.h"
 #include "Operar.h"
+#include "Matriz.h"
 #include "Pedir.h"
+#include "Txt.h"
 
 /**
-* \brief ordena Array elegir de mayor a menor o menor a mayor
+* \brief Verifica si la cadena ingresada es email
+* \param cadena Cadena de caracteres a ser analizada
+* \return Retorna 0 (vardadero) si la cadena es numerica y -1 (falso) si no lo es
+*/
+int eseMail(char* cadena)
+{
+	int i=0;
+	int retorno = 0;
+	int contararroba=0;
+	if(cadena != NULL && strlen(cadena) > 0)
+	{
+		while(cadena[i] != '\0')
+			{
+				if((cadena[i]<48||cadena[i]>57)&&(cadena[i]< 65||cadena[i]>90)&&(cadena[i]<97||cadena[i]>122))//0-9 48-57 A-Z 65-90 a-z 97-122
+					{
+						if(cadena[i]==46||cadena[i]==64)// . 46 @ 64
+						{
+							if(cadena[i]==64)//@64
+							{
+							contararroba++;
+							}
+							if(i==0)
+							{
+								retorno = -1;
+								break;
+							}
+						}else
+							{
+								retorno = -1;
+								break;
+							}
+					}
+				i++;
+			}
+		if(contararroba>1)
+		{
+			retorno=-1;
+		}
+	}
+	return retorno;
+}
+/**
+* \brief Verifica si la cadena ingresada es alfanumerica
+* \param cadena Cadena de caracteres a ser analizada
+* \return Retorna 0 (vardadero) si la cadena es numerica y -1 (falso) si no lo es
+*/
+int esAlfaumerica(char* cadena)
+{
+	int i=0;
+	int retorno = 0;
+	if(cadena != NULL && strlen(cadena) > 0)
+	{
+		while(cadena[i] != '\0')
+			{
+				if((cadena[i]<48||cadena[i]>57)&&(cadena[i]< 65||cadena[i]>90)&&(cadena[i]<97||cadena[i]>122))//0-9 48-57 A-Z 65-90 a-z 97-122
+					{
+								retorno = -1;
+								break;
+
+					}
+				i++;
+			}
+	}
+	return retorno;
+}
+/**
+* \brief ordena Array elegir de mayor a menor 0 menor a mayor 1
 * \param Array, extencion
 * \return estado o cantidad de vueltas
 */
@@ -143,13 +212,19 @@ return suma;
 */
 void cargarArrayInt(int pArray[],int ext)
 {
-	int v;
+	//int v;
 	for (int i=0; i<ext; i++)
 	{
-		printf("\nIngrese valor\n");
-		__fpurge(stdin);
-		scanf("%d",&v);
-		pArray[i]=v;
+		if (pArray!=NULL && ext>0)
+		{
+
+		pedirInt(pArray, "INGESE NUMERO ENTERO", "El dato ingresado debe ser un 'NUMERO ENTERO'", -100000, 100000, 5);
+		//pedirNumeroInt(&v, 3, "INGESE NUMERO ENTERO", "El dato ingresado debe ser un 'NUMERO ENTERO'");
+		//printf("\nIngrese Numero\n");
+		//__fpurge(stdin);
+		//scanf("%d",&v);
+		//pArray[i]=v;
+		}
 	}
 }
 /**
@@ -253,11 +328,6 @@ void inicializarArrayFloat(float pArray[],int ext,float valorInicial)
 		pArray[i]=valorInicial;
 	}
 }
-
-
-
-
-
 /**
 * \brief busca cantidad de  impares
 * \param Array, extencion
@@ -334,4 +404,60 @@ int cambiarImpares(int pArray[],int ext, int valor)
 	}
 	return cantidad;
 }
+
+/**
+* \brief Verifica si la cadena ingresada es numerica float
+* \param cadena Cadena de caracteres a ser analizada
+* \return Retorna 0 (vardadero) si la cadena es numerica y -1 (falso) si no lo es
+
+int esNumericaFloat1(char* cadena)
+{
+	int i=0;
+	int retorno = 0;
+	if(cadena != NULL && strlen(cadena) > 0)
+	{
+		while(cadena[i] != '\0')
+			{
+				if(cadena[i] < 48 || cadena[i] > 57)
+					{
+					if(cadena[i]==46)
+						{
+
+						}else
+						{
+							retorno = -1;
+							break;
+						}
+					}
+				i++;
+			}
+	}
+	return retorno;
+}
+*/
+
+/**
+* \brief Verifica si la cadena ingresada es numerica int
+* \param cadena Cadena de caracteres a ser analizada
+* \return Retorna 0 (vardadero) si la cadena es numerica y -1 (falso) si no lo es
+
+int esNumericaInt(char* cadena)
+{
+	int i=0;
+	int retorno = 0;
+	if(cadena != NULL && strlen(cadena) > 0)
+	{
+		while(cadena[i] != '\0')
+			{
+				if(cadena[i] < 48 || cadena[i] > 57)
+					{
+						retorno = -1;
+						break;
+					}
+				i++;
+			}
+	}
+	return retorno;
+}
+*/
 

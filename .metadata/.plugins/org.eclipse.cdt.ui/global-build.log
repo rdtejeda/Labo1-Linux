@@ -1,27 +1,37 @@
-12:17:30 **** Incremental Build of configuration Debug for project Mi Biblioteca ****
+21:17:52 **** Incremental Build of configuration Debug for project Parcial_1_Lab_I_2017 ****
 make all 
-Building file: ../src/Mi Biblioteca.c
+Building file: ../src/Pantalla.c
 Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Mi Biblioteca.d" -MT"src/Mi Biblioteca.o" -o "src/Mi Biblioteca.o" "../src/Mi Biblioteca.c"
-Finished building: ../src/Mi Biblioteca.c
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Pantalla.d" -MT"src/Pantalla.o" -o "src/Pantalla.o" "../src/Pantalla.c"
+Finished building: ../src/Pantalla.c
  
-Building target: Mi Biblioteca
+Building file: ../src/Parcial_1_Lab_I_2017.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Parcial_1_Lab_I_2017.d" -MT"src/Parcial_1_Lab_I_2017.o" -o "src/Parcial_1_Lab_I_2017.o" "../src/Parcial_1_Lab_I_2017.c"
+Finished building: ../src/Parcial_1_Lab_I_2017.c
+ 
+Building file: ../src/Pedir.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Pedir.d" -MT"src/Pedir.o" -o "src/Pedir.o" "../src/Pedir.c"
+Finished building: ../src/Pedir.c
+ 
+Building target: Parcial_1_Lab_I_2017
 Invoking: GCC C Linker
-gcc  -o "Mi Biblioteca"  ./src/Matriz.o ./src/Mi\ Biblioteca.o ./src/Mi-utn.o ./src/Operar.o ./src/Pedir.o ./src/Txt.o   
-Finished building target: Mi Biblioteca
+gcc  -o "Parcial_1_Lab_I_2017"  ./src/Pantalla.o ./src/Parcial_1_Lab_I_2017.o ./src/Pedir.o   
+Finished building target: Parcial_1_Lab_I_2017
  
-12:17:35 **** Incremental Build of configuration Debug for project Mi Biblioteca ****
+21:17:56 **** Incremental Build of configuration Debug for project Parcial_1_Lab_I_2017 ****
 make all 
 make: No se hace nada para 'all'.
-12:18:35 **** Incremental Build of configuration Debug for project Mi Biblioteca ****
+21:18:48 **** Incremental Build of configuration Debug for project Parcial_1_Lab_I_2017 ****
 make all 
-Building file: ../src/Mi Biblioteca.c
+Building file: ../src/Parcial_1_Lab_I_2017.c
 Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Mi Biblioteca.d" -MT"src/Mi Biblioteca.o" -o "src/Mi Biblioteca.o" "../src/Mi Biblioteca.c"
-Finished building: ../src/Mi Biblioteca.c
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Parcial_1_Lab_I_2017.d" -MT"src/Parcial_1_Lab_I_2017.o" -o "src/Parcial_1_Lab_I_2017.o" "../src/Parcial_1_Lab_I_2017.c"
+Finished building: ../src/Parcial_1_Lab_I_2017.c
  
-Building target: Mi Biblioteca
+Building target: Parcial_1_Lab_I_2017
 Invoking: GCC C Linker
-gcc  -o "Mi Biblioteca"  ./src/Matriz.o ./src/Mi\ Biblioteca.o ./src/Mi-utn.o ./src/Operar.o ./src/Pedir.o ./src/Txt.o   
-Finished building target: Mi Biblioteca
+gcc  -o "Parcial_1_Lab_I_2017"  ./src/Pantalla.o ./src/Parcial_1_Lab_I_2017.o ./src/Pedir.o   
+Finished building target: Parcial_1_Lab_I_2017
  

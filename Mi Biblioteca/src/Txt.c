@@ -13,27 +13,9 @@
 #include "Operar.h"
 #include "Matriz.h"
 #include "Pedir.h"
+#include "Txt.h"
 
-/*
- int esNumerica(char cadena[])
-{
 
-}
-
-int esTexto(char cadena[])
-{
-
-}
-
-int esAlfanumerica(char cadena[])
-{
-
-}
-int esEmail(char cadena[])
-{
-
-}
-*/
 /**
 * \brief cuenta caratres en mayuscula en una  cadena
 * \param cadena
@@ -45,7 +27,6 @@ int myStrlenMayusculas(char* cadena)
 	int index=0;
 	while(cadena[index]!='\0')
 	{
-		//if(cadena[index]>=65 && cadena[index]<=90)
 		if(cadena[index]>='A' && cadena[index]<='Z')
 		{
 			contMayus++;

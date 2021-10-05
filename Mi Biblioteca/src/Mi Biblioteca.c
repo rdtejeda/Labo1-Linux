@@ -4,7 +4,15 @@
  Author      : 
  Version     :
  Copyright   : Your copyright notice
- Description : Hello World in C, Ansi-style
+ Description :
+Realizar un programa que permita el ingreso de 10 números enteros distintos de cero.
+Listar los números positivos de manera creciente y negativos de manera decreciente. (Como máximo 5 for)
+Ejemplo:
+Listado 1 : 4, 5, 6, 10, 18, 29
+Listado 2 : -1,-5,-9,-12
+Listar solo los números primos.
+El mayor de los primos
+Los números que se repiten
  ============================================================================
  */
 
@@ -13,21 +21,62 @@
 #include <stdio_ext.h>
 #include <string.h>
 
+
 #include "Mi-utn.h"
 #include "Operar.h"
 #include "Matriz.h"
 #include "Pedir.h"
 #include "Txt.h"
 
-//#define INTENTOS 3
-
+#define INTENTOS 3
 int main(void)
 {
 
-	puts("¡Que hay de nuevo viejo!");
+//char texto;
+//int resulChar;
+
+char s[32];
+//pedirCharAUsuario(&texto, 3, "ingrese char", "no es char");
+//printf("\nEl cahr ingresado es %c\n", texto);
+
+
+
+pedirText(s, 20, "intmensaje", "mensajeError", 3);
+puts(s);
+
+
 
 return EXIT_SUCCESS;
 }
+
+/*
+	char cadena[10]="a@.ca.s6";
+	int a;
+	a=eseMail(cadena);
+	printf(" si es eMail 0, sino -1. Dice: %d\n",a);
+	char c;
+	pedirCharAUsuario(&c, INTENTOS, "txt", "txtError");
+	printf("\nel char es %c",c);
+	*/
+
+/*
+	float a;
+pedirNumeroFloat(&a, "INGRESE FLOAT", "NO ES FLOAT", 5);
+
+ printf("%.4f",a);
+ */
+
+/*int numeros[10];
+	cargarArrayInt(numeros, 10);
+	imprimirArrayInt(numeros, 10);
+	OrdenarArrayIntElegir(numeros, 10, 1);
+	imprimirArrayInt(numeros, 10);*/
+
+
+/*
+char miSaludo[50]="¡Que hay de nuevo viejo!";
+	puts(miSaludo);
+*/
 //__fpurge(stdin);
 /*
 		char cadena2[50]="BuEnAs PaRa ToDoS";

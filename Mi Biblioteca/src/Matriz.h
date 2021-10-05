@@ -8,6 +8,10 @@
 #ifndef MATRIZ_H_
 #define MATRIZ_H_
 
+int esAlfaumerica(char* cadena);
+int esAlfaumerica(char* cadena);
+int eseMail(char* cadena);
+
 int OrdenarArrayIntElegir(int pArray[], int ext, int mayorUnomenorCero);
 int OrdenarArrayInt(int pArray[], int ext);
 int cargarArrayIntUnDato(int pArray[],int ext);
@@ -23,4 +27,8 @@ int cantidadPares(int pArray[],int ext);
 int cantidadImpares(int pArray[],int ext);
 int cambiarPares(int pArray[],int ext, int valor);
 int cambiarImpares(int pArray[],int ext, int valor);
+
+//int esNumericaFloat1(char* cadena);
+//int esNumericaInt(char* cadena);
+
 #endif /* MATRIZ_H_ */

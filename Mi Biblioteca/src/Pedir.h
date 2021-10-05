@@ -8,10 +8,13 @@
 #ifndef PEDIR_H_
 #define PEDIR_H_
 
-int pedirNumeroInt(int* px, int intentos, char* txt, char* txtError);
-int pedirNumeroIntconMaxyMin(int* px, int min, int max, int intentos, char* txt, char* txtError);
+int myGets(char pResultado[], int len);
+int pedirInt(int* pResultado, char* mensaje, char* mensajeError, int minimo, int maximo, int intentos);
+int pedirText(char* pResultado, int len, char* mensaje, char* mensajeError, int intentos);
+int utn_getText(char pResultado[], int len, char* mensaje, char* mensajeError, int reintentos);
+int pedirFloat(float* pResultado, char* mensaje, char* mensajeError, int minimo, int maximo, int intentos);
+int esNumericaInt(char* cadena);
+int esNumericaFloat(char* cadena);
 int pedirCharAUsuario(char* pResultado, int reintentos, char* variableTexto, char* textoError);
-int pedirNumeroFloat(float* px, int intentos, char* txt, char* txtError);
-int pedirNumeroFloatconMaxyMin(float* px, float min, float max, int intentos, char* txt, char* txtError);
 
 #endif /* PEDIR_H_ */
