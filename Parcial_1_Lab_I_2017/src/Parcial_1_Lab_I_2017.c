@@ -19,6 +19,9 @@
 #include "Pedir.h"
 
 #define DISPLAY_NUM 10
+#define INTENTOS 3
+#define OCUPADO 0 //flag
+#define LIBRE -1 //flag
 
 int main(void)
 {

@@ -4,21 +4,23 @@
  *  Created on: 30 sep. 2021
  *      Author: usuario
  */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdio_ext.h>
 #include <string.h>
+#include <ctype.h>
+
 #include "Pantalla.h"
 #include "Pedir.h"
+
 #define DISPLAY_NUM 10
-#define LCD 0
-#define LED 1
 #define INTENTOS 3
+#define OCUPADO 0 //flag
+#define LIBRE -1 //flag
+
 static int dameUnIdNuevo(void);
 
-
-
+//=============================================================================
 /**
 * \brief busca por por ID
 * \param recibe un estructura por puntero, el largo y el idbuscado
@@ -31,7 +33,7 @@ int buscarUnId(Display *pDisplay, int len, int idbuscado)
 	{
 		for (int i = 0; i < len; ++i)
 		{
-			if(pDisplay[i].id==idbuscado)
+			if(pDisplay[i].id==idbuscado && pDisplay[i].flagEmpty==OCUPADO)
 			{
 				retorno=i;
 				break;
@@ -40,6 +42,7 @@ int buscarUnId(Display *pDisplay, int len, int idbuscado)
 	}
 	return retorno;
 }
+//=============================================================================
 /**
 * \brief busca un index flag emtyy
 * \param recibe un estructura por puntero y el largo
@@ -52,7 +55,7 @@ int buscarLugarLibre(Display *pDisplay, int len)
 	{
 		for (int i = 0; i < len; ++i)
 		{
-			if(pDisplay[i].flagEmpty==-1)
+			if(pDisplay[i].flagEmpty==LIBRE)
 			{
 				retorno=i;
 				break;
@@ -61,8 +64,7 @@ int buscarLugarLibre(Display *pDisplay, int len)
 	}
 	return retorno;
 }
-
-
+//=============================================================================
 /*
  type; //0 LCD 1 LED
  price;
@@ -71,7 +73,7 @@ int buscarLugarLibre(Display *pDisplay, int len)
  address[128];
  flagEmpty; //0 ocupada 1 vacia
  */
-
+//=============================================================================
 /**
 * \brief Imprime  todo el Display
 * \param recibe un estructura por puntero y el largo
@@ -93,7 +95,7 @@ int imprimirDisplay(Display pDisplay[], int len)
 	estado=0;
 	return estado;
 }
-
+//=============================================================================
 /**
 * \brief Imprime  el Display cargado con datos
 * \param recibe un estructura por puntero y el largo
@@ -123,7 +125,7 @@ int imprimirDisplayCargado(Display pDisplay[], int len)
 	estado=0;
 	return estado;
 }
-
+//=============================================================================
 /**
 * \brief Dar de alta un display
 * \param recibe un estructura por puntero y el largo
@@ -153,7 +155,7 @@ int disp_loadDisplay(Display *pDiplay, int len)
 			    			 strncpy(pDiplay->name, bufferName,sizeof(pDiplay->name));
 			    			 pDiplay->id=dameUnIdNuevo();
 			    			 pDiplay->flagEmpty=0;
-			    			 estado=0;
+			    			 estado=OCUPADO;
 			    		 }
 			    	 }
 			     }
@@ -161,7 +163,12 @@ int disp_loadDisplay(Display *pDiplay, int len)
 	   }
 	   return estado;
 }
-
+//=============================================================================
+/**
+  * \brief me da un id consecutivo y no repetido memorizando el ultimolvalor
+  * \param void
+  * \return Retorna 0 si todo bien  y -1 si no numero de id
+  */
 static int dameUnIdNuevo(void)
 {
 	static int contador=0; //varable Global y solo de esta funcio
@@ -183,7 +190,7 @@ int cargaFlagDisplays(Display *pDiplay, int len)
 
 	  for (int j = 0;  j<len; j++)
 	   {
-			pDiplay[j].flagEmpty=-1;
+			pDiplay[j].flagEmpty=LIBRE;
 			//pDiplay[j].id=dameUnIdNuevo();
 			//pDiplay[j].type=-1;
 			//strncpy(pDiplay[j].name,"Sin datos",128);
@@ -193,246 +200,64 @@ int cargaFlagDisplays(Display *pDiplay, int len)
    }
    return estado;
 }
-//================================================================================================================================================
-/**
-* \brief pide un texto al ususario
-* \param puntero cahr, reintentos y textos de pedido y error , intentos
-* \return Retorna -1  salio mal, 0 salio bien y 2 sin reintento
-*/
-int pedirText(char* pResultado, int len, char* mensaje, char* mensajeError, int intentos)
-{
-	int retorno = -1;
-	int i;
-	char bufferCadenaAux[128];//esto
-	for(i=0; i<=intentos; i++)
-	{
-		if(pResultado != NULL && mensaje != NULL && mensajeError != NULL && intentos >= 0)
-		{
-
-			printf("\n%s\n", mensaje);
-			__fpurge(stdin);
-			if(myGets(bufferCadenaAux,sizeof(bufferCadenaAux))==0)
+ //=====================================================================================================
+ /*
+ int buscarLibre (Display *unDisplay, int len)
+ {
+	 int retorno=-1;
+	 if(unDisplay!=NULL && len>0)
+	 {
+		 for (int i = 0;  i< len; ++i)
+		 {
+			if(unDisplay[i].flagEmpty==LIBRE)
 			{
-				strncpy(pResultado, bufferCadenaAux,len);
-				if (esAlfaumerica(pResultado)==0)
-				{
-					retorno = 0;
+				retorno=i;
 				break;
-				}
-			}else
-				{
-					printf("%s", mensajeError);
-				}
-		}
-	}
-	return retorno;
-}
- //==================================================================================================
- /**
-  * \brief Solicita un numero al usuario, leuego de verificarlo devuelve el resultado
-  * \param pResultado Puntero al espacio de memoria donde se dejara el resultado de la funcion
-  * \param mensaje Es el mensaje a ser mostrado
-  * \param mensajeError Es el mensaje de Error a ser mostrado
-  * \param minimo Es el numero maximo a ser aceptado
-  * \param maximo Es el minimo minimo a ser aceptado
-  * \return Retorna 0 si se obtuvo el numero y -1 si no
-  */
- int pedirInt(int* pResultado, char* mensaje, char* mensajeError, int minimo, int maximo, int intentos)
- {
- 	int retorno = -1;
- 	int bufferInt;
- 	int i;
- 	char bufferCadenaAux[32];
+			}
+		 }
+	 }
+	 return retorno;
+ }
 
- 	if(pResultado != NULL && mensaje != NULL && mensajeError != NULL && minimo <= maximo && intentos >= 0)
- 	{
- 		for(i=0; i<=intentos; i++)
- 		{
- 			printf("\n%s\n", mensaje);
- 			__fpurge(stdin);
- 			if(myGets(bufferCadenaAux,sizeof(bufferCadenaAux))==0)
- 			{
- 				if(esNumericaInt(bufferCadenaAux)==0)
- 					{
- 					bufferInt = atoi(bufferCadenaAux);
- 					if(bufferInt >= minimo && bufferInt <= maximo)
- 						{
- 							*pResultado = bufferInt;
- 							retorno = 0;
- 							break;
- 						}else
- 							{
- 							printf("%s", mensajeError);
- 							}
- 					}
- 				else
- 					{
- 					printf("%s", mensajeError);
- 					}
- 			}
- 			else
- 				{
- 				printf("%s", mensajeError);
- 				}
- 		}
- 		if(retorno==-1)
- 		{
- 			printf("\nTe quedaste sin intentos\n");
- 		}
- 	}
- 	return retorno;
- }
- //=====================================================================================================
- /**
-  * \brief Verifica si la cadena ingresada es numerica
-  * \param pResultado Puntero al espacio de memoria donde se dejara el resultado de la funcion
-  * \return Retorna 0 (EXITO) si se obtiene un numero  y -1 (ERROR) si no
- */
- int esNumericaInt(char* cadena)
+ int modificarDisplay(Display *unDisplay, int len)
  {
- 	int i=0;
- 	int retorno=-1;
- 	if(cadena!=NULL && strlen(cadena)> 0)
- 	{
- 		retorno=0;
- 		while(cadena[i]!='\0')
- 			{
- 				if(cadena[i]<'0'||cadena[i]> '9')
- 					{
- 					retorno=-1;
- 					break;
- 					}
- 				i++;
- 			}
- 	}
- 	return retorno;
- }
- //=====================================================================================================
- /**
-  * \brief Lee de stdin hasta que encuentra un '\n' o hasta que haya copiado en cadena un máximo de 'longitud - 1' caracteres.
-  * \param pResultado Puntero al espacio de memoria donde se copiara la cadena obtenida
-  * \param len Define el tamaño de cadena
-  * \return Retorna 0 (EXITO) si se obtiene una cadena y -1 (ERROR) si no
- */
- int myGets(char pResultado[], int len)
- {
- 	int retorno=-1;
- 	int indexFinal;
- 	//__fpurge(stdin);
- 	if(fgets(pResultado,len,stdin)!=NULL)
- 	{
- 		__fpurge(stdin);
- 		indexFinal = strlen(pResultado)-1;
- 		if(pResultado[indexFinal] == '\n')
- 			{
- 			pResultado[indexFinal] = '\0';
- 			}
- 		retorno = 0;
- 	}
- 	return retorno;
- }
- //==================================================================================================
- /**
-  * \brief Solicita un numero al usuario, leuego de verificarlo devuelve el resultado
-  * \param pResultado Puntero al espacio de memoria donde se dejara el resultado de la funcion
-  * \param mensaje Es el mensaje a ser mostrado
-  * \param mensajeError Es el mensaje de Error a ser mostrado
-  * \param minimo Es el numero maximo a ser aceptado
-  * \param maximo Es el minimo minimo a ser aceptado
-  * \return Retorna 0 si se obtuvo el numero y -1 si no
-  */
- int pedirFloat(float* pResultado, char* mensaje, char* mensajeError, int minimo, int maximo, int intentos)
- {
- 	int retorno = -1;
- 	float bufferInt;
- 	int i;
- 	char bufferCadenaAux[32];
+	 int retorno=-1;
+	 int idamodificar;
+	 int posicion;
 
- 	if(pResultado != NULL && mensaje != NULL && mensajeError != NULL && minimo <= maximo && intentos >= 0)
- 	{
- 		for(i=0; i<=intentos; i++)
- 		{
- 			printf("\n%s\n", mensaje);
- 			__fpurge(stdin);
- 			if(myGets(bufferCadenaAux,sizeof(bufferCadenaAux))==0)
- 			{
- 				if(esNumericaFloat(bufferCadenaAux)==0)
- 					{
- 					bufferInt = atof(bufferCadenaAux);
- 					if(bufferInt >= minimo && bufferInt <= maximo)
- 						{
- 							*pResultado = bufferInt;
- 							retorno = 0;
- 							break;
- 						}else
- 							{
- 							printf("%s", mensajeError);
- 							}
- 					}
- 				else
- 					{
- 					printf("%s", mensajeError);
- 					}
- 			}
- 			else
- 				{
- 				printf("%s", mensajeError);
- 				}
- 		}
- 		if(retorno==-1)
- 		{
- 			printf("\nTe quedaste sin intentos\n");
- 		}
- 	}
- 	return retorno;
+	 imprimirDisplayCargado(unDisplay, len); //IMPRIMIR LISTA
+	 pedirInt(&idamodificar, "Ingrese Id a modificar", "Error", 0, len, INTENTOS);
+	 posicion=buscarUnId(unDisplay, len, idamodificar);
+
+	 if (posicion>=0)
+	 {
+		 Display auxiliar={1,100,99,"Name","Siempre viva",0}; //MODIFICACION
+
+		 unDisplay[posicion]=auxiliar;
+
+		 unDisplay[posicion].flagEmpty=LIBRE; ///baja logica
+		 	 	 	 	 	 	 	 	 	  // estados de baja para llevar un control
+		 retorno=0;
+	 }
+	 return retorno;
  }
- //=========================================================================================================
- /**
- * \brief Verifica si la cadena ingresada es numerica
- * \param cadena Cadena de caracteres a ser analizada
- * \return Retorna 0 (vardadero) si la cadena es numerica y -1 (falso) si no lo es
+ // MOSTRA LISTADO a modificar
+ // Seleccionar id a modificar
+ // Buscar el id
+ // Modificar la pantalla
  */
- int esNumericaFloat(char* cadena)
- {
- 	int i=0;
- 	int retorno = -1;
- 	int contNeg=0;
- 	int contPuntos=0;
- 	if(cadena != NULL && strlen(cadena) > 0)
- 	{
- 		retorno=0;
- 		while(cadena[i] != '\0')
- 			{
- 				if(cadena[i] < '0' || cadena[i] > '9')
- 					{
- 					if(cadena[i]=='-' || cadena[i]=='.')
- 						{
- 							if(cadena[i]=='-')
- 							{
- 								contNeg++;
- 								if(i!=0)
- 								{
- 									retorno = -1;
- 									break;
- 								}
- 							}
- 							if(cadena[i]=='.')
- 							{
- 								contPuntos++;
- 							}
- 						}else
- 						{
- 							retorno = -1;
- 							break;
- 						}
- 					}
- 				i++;
- 			}
- 		if(contNeg>1 ||contPuntos>1)
- 		{
- 			retorno=-1;
- 		}
- 	}
- 	return retorno;
- }
- //=====================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
