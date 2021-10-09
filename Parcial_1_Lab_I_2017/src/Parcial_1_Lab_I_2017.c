@@ -18,6 +18,7 @@
 #include "Pantalla.h"
 #include "Pedir.h"
 
+
 #define DISPLAY_NUM 10
 #define INTENTOS 3
 #define OCUPADO 0 //flag
@@ -28,22 +29,45 @@ int main(void)
 	Display displays[DISPLAY_NUM];
 	char seguir;
 	int libre;
-	int buscado;
-	cargaFlagDisplays(displays, DISPLAY_NUM);
+	//int buscado;
+	//int baja;
+	//int retorno;
+	cargaFlagDisplay(displays, DISPLAY_NUM);
 	do
 	{
-	libre=buscarLugarLibre(displays, DISPLAY_NUM);
-	printf("\nEl primer lugar libre es %d\n",libre);
-	disp_loadDisplay(&displays[libre], DISPLAY_NUM);
+	if(buscarLugarLibreDisplay(displays, DISPLAY_NUM)>=0)
+		{
+			libre=buscarLugarLibreDisplay(displays, DISPLAY_NUM);
+			printf("\nEl primer lugar libre es %d\n",libre);
+			disp_loadDisplay(&displays[libre], DISPLAY_NUM);
+		}else
+		{
+			puts("No hay espacio libre en el array");
+		}
+
+	/// el & termina mandando la direccion
+	///de memoria de la posicion[libre] del array diplay
 	pedirCharAUsuario(&seguir, 3, "Para seguir ingrese 'S'", "txtError");
 
 	}while(seguir=='S');
+
+	puts("LOS DIPLAY CARGADOS SON");
 	imprimirDisplayCargado(displays, DISPLAY_NUM);
 
-	buscado=buscarUnId(displays, DISPLAY_NUM, 2);
-	printf("El id buscado esta en la posicion  %d\n", buscado);
+
+	//buscado=buscarUnId(displays, DISPLAY_NUM, 1);
+	//printf("El id 1 esta en la posicion  %d\n", buscado);
 
 	//imprimirDisplay(displays, DISPLAY_NUM);
+	//modificarUnDisplay(displays, DISPLAY_NUM);
+
+	//pedirInt(&baja, "Ingrese el Id a dar de baja", "mensajeError", 0, DISPLAY_NUM,INTENTOS);
+	//retorno=bajaLogicaUnDisplay(displays, DISPLAY_NUM, baja);
+	//printf("\nEl RETORNO DE LA BAJA LOGICA DICE %d\n",retorno);
+	ordenaDisplayPorDireccioYPrecio(displays, DISPLAY_NUM);
+
+	imprimirDisplayCargado(displays, DISPLAY_NUM);
+
 	puts("!!!Que hay de nuevo viejo!!!");
 
 	return EXIT_SUCCESS;

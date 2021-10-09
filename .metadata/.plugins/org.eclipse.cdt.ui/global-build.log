@@ -1,4 +1,40 @@
-00:04:28 **** Build of configuration Debug for project Parcial_1_Lab_I_2017 ****
+20:02:41 **** Incremental Build of configuration Debug for project Parcial_1_Lab_I_2017 ****
+make all 
+Building file: ../src/Pantalla.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Pantalla.d" -MT"src/Pantalla.o" -o "src/Pantalla.o" "../src/Pantalla.c"
+Finished building: ../src/Pantalla.c
+ 
+Building target: Parcial_1_Lab_I_2017
+Invoking: GCC C Linker
+gcc  -o "Parcial_1_Lab_I_2017"  ./src/Pantalla.o ./src/Parcial_1_Lab_I_2017.o ./src/Pedir.o   
+Finished building target: Parcial_1_Lab_I_2017
+ 
+09:51:57 **** Incremental Build of configuration Debug for project Parcial_1_Lab_I_2017 ****
+make all 
+Building file: ../src/Pantalla.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Pantalla.d" -MT"src/Pantalla.o" -o "src/Pantalla.o" "../src/Pantalla.c"
+Finished building: ../src/Pantalla.c
+ 
+Building target: Parcial_1_Lab_I_2017
+Invoking: GCC C Linker
+gcc  -o "Parcial_1_Lab_I_2017"  ./src/Pantalla.o ./src/Parcial_1_Lab_I_2017.o ./src/Pedir.o   
+Finished building target: Parcial_1_Lab_I_2017
+ 
+09:54:02 **** Incremental Build of configuration Debug for project Parcial_1_Lab_I_2017 ****
+make all 
+Building file: ../src/Pantalla.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Pantalla.d" -MT"src/Pantalla.o" -o "src/Pantalla.o" "../src/Pantalla.c"
+Finished building: ../src/Pantalla.c
+ 
+Building target: Parcial_1_Lab_I_2017
+Invoking: GCC C Linker
+gcc  -o "Parcial_1_Lab_I_2017"  ./src/Pantalla.o ./src/Parcial_1_Lab_I_2017.o ./src/Pedir.o   
+Finished building target: Parcial_1_Lab_I_2017
+ 
+10:09:51 **** Incremental Build of configuration Debug for project Parcial_1_Lab_I_2017 ****
 make all 
 Building file: ../src/Pantalla.c
 Invoking: GCC C Compiler

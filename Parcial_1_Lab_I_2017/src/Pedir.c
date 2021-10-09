@@ -29,9 +29,9 @@ int pedirText(char* pResultado, int len, char* mensaje, char* mensajeError, int 
 	int retorno = -1;
 	int i;
 	char bufferCadenaAux[128];//esto
-	for(i=0; i<=intentos; i++)
+	if(pResultado != NULL && mensaje != NULL && mensajeError != NULL && intentos >= 0)
 	{
-		if(pResultado != NULL && mensaje != NULL && mensajeError != NULL && intentos >= 0)
+		for(i=0; i<=intentos; i++)
 		{
 
 			printf("\n%s\n", mensaje);
