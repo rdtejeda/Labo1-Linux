@@ -12,7 +12,7 @@
 #include "Input.h"
 #include "Empleado.h"
 
-void CargarEmpleados(eEmpleado lista[], int largo)
+void CargarEmpleados(eEmpleado *lista, int largo)
 {
 	for (int i = 0; i < largo; i++)
 	{

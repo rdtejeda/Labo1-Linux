@@ -8,6 +8,8 @@
 #ifndef PEDIR_H_
 #define PEDIR_H_
 
+void imprimirMenuInicial();
+
 int pedirCharAUsuario(char* pChar, int reintentos, char* txt, char* txtError);
 int esAlfaumerica(char* cadena);
 int pedirInt(int* pResultado, char* mensaje, char* mensajeError, int minimo, int maximo, int intentos);

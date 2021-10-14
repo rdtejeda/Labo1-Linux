@@ -12,6 +12,7 @@
 
 #include "Pantalla.h"
 #include "Pedir.h"
+#include "Contrataciones.h"
 
 
 #define DISPLAY_NUM 10
@@ -30,9 +31,57 @@ static int dameUnIdNuevo(void);
  address[128];
  flagEmpty; //0 ocupada 1 vacia
  */
+//==============================================================================
+
+
+/**
+* \brief Imprime menu de opciones
+* \param
+* \return
+*/
+void imprimirMenu()
+{
+	puts("1- TIPO DE DIPLAY");
+	puts("2- PRECIO DE LA PUBLICACION");
+	puts("3- NOMBRE DE LA PUBLICACION");
+	puts("4- DIRECCION DE LA PANTALLA");
+	puts("5- SALIR");
+}
+
+/**
+* \brief da de alta un display en el array de Display
+* \param recibe un array de estructura, el largo
+* \return Retorna -1 todo mal 0 todo bien
+*/
+//=============================================================================
+int altaDisplay(Display pDisplay[],int len)
+{
+	int retorno=-1;
+	int libre;
+	if(pDisplay!=NULL && len>0)
+	{
+		libre=buscarLugarLibreDisplay(pDisplay, DISPLAY_NUM);
+		if(buscarLugarLibreDisplay(pDisplay, DISPLAY_NUM)>=0)
+			{
+				printf("\nEl primer lugar libre es %d\n",libre);
+				if(disp_loadDisplay(&pDisplay[libre], DISPLAY_NUM)==0)
+				{
+					puts("Se ha completado la carga");
+				}else
+				{
+					puts("No se ha completado la carga");
+				}
+			}else
+				{
+					puts("No hay espacio libre en el array");
+				}
+	}
+	retorno=0;
+return retorno;
+}
 //=============================================================================
 /**
-* \brief Ordena el array de Display por orden alfabetico ascendente de nobre y precio
+* \brief Ordena el array de Display por orden alfabetico ascendente de nombre y precio
 * \param recibe un array de estructura, el largo
 * \return Retorna -1 todo mal 0 todo bien
 */
@@ -89,6 +138,7 @@ int ordenaDisplayPorDireccioYPrecio(Display pDisplay[], int len)
 	 char bufferAddres[128];
 	 char bufferName[128];
 	 float bufferPrice;
+	 int opcion;
 	 Display auxiliar; //= {1,100,99,"Name","Siempre 11 viva",0}; //MODIFICACION Harcodeada
 	 if(pDisplay!=NULL && len>0)
 		 {
@@ -96,29 +146,36 @@ int ordenaDisplayPorDireccioYPrecio(Display pDisplay[], int len)
 		 pedirInt(&idamodificar, "Ingrese Id a modificar", "Error", 0, len, INTENTOS);// Seleccionar id a modificar
 		 posicion=buscarUnId(pDisplay, len, idamodificar); // Buscar la posicion en el array del id selecionado
 		 if (posicion>=0)// Modificar la pantalla
-			 {				
-			 if(pedirInt(&bufferType, "Ingrese tipo 0 para LCD y 1 LED", "Ingrese tipo valido", 0, 1, INTENTOS)==0)
-			 		   {
-			 			     if(pedirFloat(&bufferPrice, "Valor de la publicación", "Ingrese un numero correcto", 0, 100000, INTENTOS)==0)
-			 			     {
-			 			    	 if(pedirText(bufferAddres, sizeof(auxiliar.address), "Ingrese la dirrecion de la pantalla", "Direccion no valida", INTENTOS)==0)
-			 			    	 {
-			 			    		 if(pedirText(bufferName, sizeof(auxiliar.name), "ingrese el nombre de la pantala", "Nombre invalido",INTENTOS)==0)
-			 			    		 {
-			 			    			 auxiliar.type=bufferType;
-			 			    			 auxiliar.price=bufferPrice;
-			 			    			 strncpy(auxiliar.address, bufferAddres,sizeof(auxiliar.address));
-			 			    			 strncpy(auxiliar.name, bufferName,sizeof(auxiliar.name));
-			 			    			 auxiliar.id=idamodificar;
-			 			    			 auxiliar.flagEmpty=OCUPADO;
-			 			    			 retorno=OCUPADO;
-			 			    		 }
-			 			    	 }
-			 			     }
-			 		   }
-			 	 pDisplay[posicion]=auxiliar;
-				retorno=0;
-			 }
+			 {
+			 do
+				 {
+					 puts("INGRESE OPCION A MOFIFICAR");
+					 imprimirMenu();
+					 pedirInt(&opcion, "INGRESE OPCION A MOFIFICAR", "Ingrese entre 1 y 5", 1,5,INTENTOS);
+					 switch (opcion)
+					 {
+						case 1:
+							pedirInt(&bufferType, "Ingrese tipo 0 para LCD y 1 LED", "Ingrese tipo valido", 0, 1, INTENTOS);
+							pDisplay->type=bufferType;
+							break;
+						case 2:
+							pedirFloat(&bufferPrice, "Valor de la publicación", "Ingrese un numero correcto", 0, 100000, INTENTOS);
+							pDisplay->price=bufferPrice;
+							break;
+						case 3:
+							pedirText(bufferName, sizeof(auxiliar.name), "ingrese el nombre de la pantala", "Nombre invalido",INTENTOS);
+							strncpy(pDisplay->name, bufferName, sizeof(pDisplay->name));
+							break;
+						case 4:
+							pedirText(bufferAddres, sizeof(auxiliar.address), "Ingrese la dirrecion de la pantalla", "Direccion no valida", INTENTOS);
+							strncpy(pDisplay->address, bufferAddres, sizeof(pDisplay->address));
+							break;
+						default:
+							break;
+					 }
+				 }while(opcion<5);
+			 }else
+				 puts("Id no hallado");
 		 }
 	 return retorno;
  }
@@ -142,7 +199,7 @@ int ordenaDisplayPorDireccioYPrecio(Display pDisplay[], int len)
  }
 //==============================================================================
 /**
-* \brief busca por por ID
+* \brief busca la posiscion de un ID
 * \param recibe un estructura por puntero, el largo y el idbuscado
 * \return Retorna posicion en el array del id buscado o -1 si no lo alla
 */
@@ -311,3 +368,52 @@ int cargaFlagDisplay(Display *pDiplay, int len)
    return estado;
 }
  //=====================================================================================================
+/*
+int modificarUnDisplay(Display *pDisplay, int len)
+{
+	 int retorno=-1;
+	 int idamodificar;
+	 int posicion;
+	 int bufferType;
+	 char bufferAddres[128];
+	 char bufferName[128];
+	 float bufferPrice;
+	 int opcion;
+	 Display auxiliar; //= {1,100,99,"Name","Siempre 11 viva",0}; //MODIFICACION Harcodeada
+	 if(pDisplay!=NULL && len>0)
+		 {
+		 imprimirDisplayCargado(pDisplay, len);  // IMPRIMIR LISTA EMTY - MOSTRA LISTADO de posibles Display a modificar
+		 pedirInt(&idamodificar, "Ingrese Id a modificar", "Error", 0, len, INTENTOS);// Seleccionar id a modificar
+		 posicion=buscarUnId(pDisplay, len, idamodificar); // Buscar la posicion en el array del id selecionado
+		 if (posicion>=0)// Modificar la pantalla
+			 {
+			 if(pedirInt(&bufferType, "Ingrese tipo 0 para LCD y 1 LED", "Ingrese tipo valido", 0, 1, INTENTOS)==0)
+						 		   {
+						 			     if(pedirFloat(&bufferPrice, "Valor de la publicación", "Ingrese un numero correcto", 0, 100000, INTENTOS)==0)
+						 			     {
+						 			    	 if(pedirText(bufferAddres, sizeof(auxiliar.address), "Ingrese la dirrecion de la pantalla", "Direccion no valida", INTENTOS)==0)
+						 			    	 {
+						 			    		 if(pedirText(bufferName, sizeof(auxiliar.name), "ingrese el nombre de la pantala", "Nombre invalido",INTENTOS)==0)
+						 			    		 {
+						 			    			 auxiliar.type=bufferType;
+						 			    			 auxiliar.price=bufferPrice;
+						 			    			 strncpy(auxiliar.address, bufferAddres,sizeof(auxiliar.address));
+						 			    			 strncpy(auxiliar.name, bufferName,sizeof(auxiliar.name));
+						 			    			 auxiliar.id=idamodificar;
+						 			    			 auxiliar.flagEmpty=OCUPADO;
+						 			    			 pDisplay[posicion]=auxiliar;
+						 			    			 retorno=0;
+						 			    		 }else
+						 				 			   puts("Datos ingresados no validos, no se ha modificado el ID");
+						 			    	 }else
+									 			   puts("Datos ingresados no validos, no se ha modificado el ID");
+						 			     }else
+								 			   puts("Datos ingresados no validos, no se ha modificado el ID");
+						 		   }else
+						 			   puts("Datos ingresados no validos, no se ha modificado el ID");
+			 }else
+				 puts("Id no hallado");
+		 }
+	 return retorno;
+}
+*/

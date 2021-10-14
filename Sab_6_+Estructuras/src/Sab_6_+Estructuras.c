@@ -44,6 +44,7 @@ int main(void)
 	puts("!!!Que hay de nuevo viejo!!!");
 	return EXIT_SUCCESS;
 }
+/*
 
 void MostrarSeries(eSerie listaSeries[], int len)
 {
@@ -83,6 +84,7 @@ void MostrarListadoGenero(eSerie listaSeries[], int lenSerie, eGenero listaGener
 		}
 	}
 }
+*/
 
 
 

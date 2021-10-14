@@ -23,4 +23,10 @@ typedef	struct
 		//eGenero genero; REDUNDANCIA
 		}eSerie;
 
+void MostrarSeries(eSerie listaSeries[], int len);
+void MostrarSeriesGenero(eSerie listaSeries[], int lenSerie,eGenero listaGeneros[], int lenGenero);
+void MostrarListadoGenero(eSerie listaSeries[], int lenSerie, eGenero listaGeneros[], int lenGenero);
+
+
+
 #endif /* SERIE_H_ */
